@@ -10,9 +10,23 @@ from sifli_docs_toolbox.docs_conf import *
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'foo'
+project = 'SF32LB56x 低功耗场景测试报告'
 
 # uncomment this this line if you want to hide version listbox
 # del html_context['versions']
 # uncomment this this line if you want to hide language listbox
 # del html_context['languages']
+
+chip = 'SF32LB56x'
+doc_id = 'RPT5602'
+doc_name = '低功耗场景测试报告'
+doc_dir = 'rpt5602_sf32lb56x-low-power-measurement-report'
+
+html_context.update({
+    'chip': chip,
+    'doc_id': doc_id,
+    'doc_name': doc_name,
+    })
+
+pdf_url_enabled = True
+

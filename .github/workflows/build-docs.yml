@@ -1,18 +1,17 @@
 name: Build and Upload Documentation
 
 env:
-  PROJ_NAME: doc-template
+  PROJ_NAME: rpt5602_sf32lb56x-low-power-measurement-report
 
 on:
-  # Uncomment the following lines to enable automatic triggering on push events
-  # push:
-  #   branches:
-  #     - main
-  #     - 'release/*'
-  #   paths:
-  #     - 'source/**'
-  #   tags:
-  #     - '*'
+  push:
+    branches:
+      - main
+      - 'release/*'
+    paths:
+      - 'source/**'
+    tags:
+      - '*'
   workflow_dispatch:  # 允许手动触发
 
 jobs:

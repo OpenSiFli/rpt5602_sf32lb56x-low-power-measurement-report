@@ -12,12 +12,17 @@
 (b) btskey 7
 (c) btskey 0
 ```
-4. * 将唤醒 PIN 接高电平，系统进入低功耗模式，电流值如下图明显的下降，测量 200ms 间隔时的电流，低功耗模式下的电流波形见ADV=200ms 的电流波形图，记 10 秒的平均电流为 C1, 两个峰之间的电流记为睡眠电流 C2，ADV 的增量电流 C=C1-C2
+4. * 将唤醒 PIN 接高电平，系统进入低功耗模式，电流值如下图明显的下降，测量 200ms 间隔时的电流，低功耗模式下的电流波形见ADV=200ms 的电流波形图。
 ![](assert/image6.png)
 <div align="center"><strong>进入低功耗模式电流变化</strong></div>
 
 ![](assert/image7.png)
 <div align="center"><strong>ADV=200ms 的电流波形</strong></div>
+
+挑选一个周期内的ADV的工作电流选中，得到一次工作的持续时间 At 与平均电流 AC，再得到当前周期内的休眠时间持续 St 与休眠平均电流 Sc，代入如下公式计算可得出平均电流消耗。
+计算公式：平均电流 = (Ac * 1000 * At + Sc * St)/(At + St)
+![](assert/image11.png)
+<div align="center"><strong> 选择周期</strong></div>
 
 5. * 将唤醒 PIN 接低电平，系统退出低功耗模式，在 console 里发送命令ble_config adv 500，将 ADV 间隔改为 500ms
 6. * 将唤醒 PIN 接高电平，系统再次进入低功耗模式，测量 500ms 间隔时的电流

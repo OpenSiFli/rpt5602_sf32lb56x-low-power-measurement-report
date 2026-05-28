@@ -1,25 +1,31 @@
 # ADV Scenario
-1. Open a serial debug tool, connect to the HCPU console port, and hook up the measurement device to the DUT.
-2. After the board boots successfully, the log appears as shown in [the figure](adv_log). At this time, keep the wake-up pin floating or low; otherwise it will enter sleep right after boot.
+1. * Open a serial terminal, connect to the HCPU console UART, and connect the measurement equipment to the device under test.
+2. * After the board boots successfully, the log shown below (image: adv_log) appears. At this time the wake pin should be left floating or pulled low; otherwise the board will enter sleep on power-up.
 
 ```{image} assert/image5.png
 :name: adv_log
 ```
 
-3. The default ADV interval after startup is 200 ms. Inquiry Scan and Page Scan are also enabled automatically. To measure BLE power, disable scans using `btskey` commands (see BT Scan section). For example, send `btskey s`; if the menu shows you are at the main page, send the following commands to disable Page Scan and Inquiry Scan. After `btskey 0`, you can send `btskey 4` to query scan status.
+3. * After startup the default ADV interval is 200 ms. Because Inquiry Scan and Page Scan are also enabled automatically, disable Scan with the `btskey` commands when testing BLE power consumption. The disable sequence follows the Classic Bluetooth Scan section. For example, send `btskey s` first; if the console is at the main menu you can send the following three commands in order to disable Page Scan and Inquiry Scan. After sending `btskey 0` you can use `btskey 4` to query the Scan status.
 ```
 (a) btskey 1
 (b) btskey 7
 (c) btskey 0
 ```
-4. Pull the wake-up pin high to enter low-power mode; the current drops noticeably as shown below. Measure current at the 200 ms interval. In low-power mode, see the waveform at ADV=200 ms. Record 10 s average current as C1, sleep current between two peaks as C2, and compute ADV incremental current as C=C1−C2.
+4. * Pull the wake PIN high to enter low-power mode. The current drops as shown below. Measure the current for a 200 ms interval; the low-power current waveform for ADV=200 ms is shown in the figure.
 ![](assert/image6.png)
 <div align="center"><strong>Current change when entering low-power mode</strong></div>
 
 ![](assert/image7.png)
-<div align="center"><strong>Current waveform at ADV = 200 ms</strong></div>
+<div align="center"><strong>Current waveform for ADV = 200 ms</strong></div>
 
-5. Pull the wake-up pin low to exit low-power mode, and send `ble_config adv 500` in the console to change ADV interval to 500 ms.
-6. Pull the wake-up pin high again to enter low-power mode and measure current at 500 ms interval.
+Select an ADV cycle and measure the active current to obtain the active duration `At` and average active current `Ac`, and measure the sleep duration `St` and sleep average current `Sc`. Substitute these into the formula below to calculate the average current consumption.
 
-Repeat steps 5 and 6 to measure current at ADV intervals of 50 ms, 100 ms, 500 ms, and 1000 ms.
+Calculation formula: Average current = (Ac * 1000 * At + Sc * St) / (At + St)
+![](assert/image11.png)
+<div align="center"><strong>Cycle selection</strong></div>
+
+5. * Pull the wake PIN low to exit low-power mode. In the console send `ble_config adv 500` to change the ADV interval to 500 ms.
+6. * Pull the wake PIN high again to re-enter low-power mode and measure the current for the 500 ms interval.
+
+Repeat steps 5 and 6 to measure current for ADV intervals of 50 ms, 100 ms, 500 ms, and 1000 ms.

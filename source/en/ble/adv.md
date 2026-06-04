@@ -1,4 +1,7 @@
 # ADV Scenario
+
+* Note: It is recommended to conduct ADV scenario tests in a shielding box or shielding room. Otherwise, interference from other devices will lead to inflated test results.
+
 1. * Open a serial terminal, connect to the HCPU console UART, and connect the measurement equipment to the device under test.
 2. * After the board boots successfully, the log shown below (image: adv_log) appears. At this time the wake pin should be left floating or pulled low; otherwise the board will enter sleep on power-up.
 

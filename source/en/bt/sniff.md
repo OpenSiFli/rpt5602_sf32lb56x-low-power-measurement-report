@@ -32,6 +32,10 @@
 (e) btskey 7: select Scan mode
 (f) btskey 0: disable scan
 ```
-5. Similar to Scan current measurement, the Sniff-mode incremental current is the 10-second average current minus the sleep baseline between two peaks.
+5. * Similar to the Scan current measurement method, select the sniff active current within one cycle, measure the active duration At and the average current AC, then measure the sleep duration St within the same cycle and the sleep average current Sc. Substitute these values into the following formula to calculate the average current consumption of sniff.
+Formula: Average current = (Ac * 1000 * At + Sc * St)/(At + St)
+![](assert/image11.png)
+<div align="center"><strong> Select period</strong></div>
 
-6. Sniff interval and attempt count depend on the phone. In this test with OnePlus Ace 6, attempt count is 4. The incremental current for a given interval can be derived from the current waveform. For example, if the Bluetooth active duration is `T = 7 ms` and average current is `I = 1.9 mA`, then for a 500 ms interval the incremental current is `ΔI = I × T / (500 ms − T) ≈ 27 µA`.
+
+6. * The Sniff mode interval and attempt count depend on the phone. In this test, a OnePlus Ace 6 was used, and the attempt count was 4.

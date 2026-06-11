@@ -32,7 +32,7 @@
       <td rowspan="2">17.41</td>
     </tr>
     <tr>
-      <td>12MHz</td>
+      <td>24MHz</td>
       <td>518</td>
     </tr>
   </tbody>
@@ -67,7 +67,7 @@
       <td rowspan="2">26.2</td>
     </tr>
     <tr>
-      <td>12MHz</td>
+      <td>24MHz</td>
       <td>911</td>
     </tr>
   </tbody>
@@ -104,7 +104,7 @@
       <td rowspan="2">13.54</td>
     </tr>
     <tr>
-      <td>12MHz</td>
+      <td>24MHz</td>
       <td>396</td>
     </tr>
   </tbody>
@@ -139,7 +139,7 @@
       <td rowspan="2">17.62</td>
     </tr>
     <tr>
-      <td>12MHz</td>
+      <td>24MHz</td>
       <td>717</td>
     </tr>
   </tbody>

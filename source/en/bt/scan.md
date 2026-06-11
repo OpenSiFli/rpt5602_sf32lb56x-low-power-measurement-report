@@ -16,6 +16,13 @@ diss adv_stop
 
 ![](assert/image6.png)
 
-5. Configure the device via BTS commands to enable only Inquiry Scan or only Page Scan, then set the wake-up pin high so the system enters low-power mode. Measure the 1-minute average current (Scan average current `C1`) and the baseline current between two peaks (sleep current `C2`). The incremental current is `C = C1 − C2`. The test program uses a Page Scan period of 1.28 s and an Inquiry Scan period of 2.56 s, so Inquiry Scan’s incremental current is half of Page Scan’s.
+5. * Use BTS commands to configure the device to transmit only Inquiry Scan or Page Scan. Set the wake-up pin high, and the system will enter low-power mode.
 
-6. Set the wake-up pin low, use BTS commands to enable both Inquiry Scan and Page Scan, then set the wake-up pin high to enter low-power mode. Measure the average current and record it as the Both Scan current.
+Select the scan activity current within one cycle, measure the active duration At and the average current AC, then measure the sleep duration St within the same cycle and the sleep average current Sc. Substitute these values into the following formula to calculate the average current consumption of Inquiry Scan or Page Scan.
+Formula: Average current = (Ac * 1000 * At + Sc * St)/(At + St)
+![](assert/image11.png)
+<div align="center"><strong> Select period</strong></div>
+
+The Page Scan period in the test program is 1.28 seconds, and the Inquiry Scan period is 2.56 seconds, so the incremental current of Inquiry Scan is half that of Page Scan.
+
+6. * Set the wake-up pin low, use BTS commands to configure the device to transmit both Inquiry Scan and Page Scan, then set the wake-up pin high and let the system enter low-power mode. Measure the average current over one minute as C1 for both scan, then measure the baseline current between the two peaks as the sleep current C2. The incremental current of both scan is C = C1 - C2.

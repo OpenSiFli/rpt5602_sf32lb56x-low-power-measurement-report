@@ -32,7 +32,10 @@
 (e) btskey 7: 选择 Scan mode
 (f) btskey 0: 关闭 scan
 ```
-5. * 与 Scan 电流的测量方法类似，Sniff 模式的增量电流可以由 10 秒的平均电流与两个峰之间的睡眠电流相减得到
+5. * 与 Scan 电流的测量方法类似，挑选一个周期内的sniff工作电流选中，得到一次工作的持续时间 At 与平均电流 AC，再得到当前周期内的休眠时间持续 St 与休眠平均电流 Sc，代入如下公式计算可得出sniff平均电流消耗。
+计算公式：平均电流 = (Ac * 1000 * At + Sc * St)/(At + St)
+![](assert/image11.png)
+<div align="center"><strong> 选择周期</strong></div>
 
-6. * Snif 模式的间隔与 attemp 次数与手机有关，本次测试中使用 一加ace 6，attemp 次数为4，不同间隔的增量电流可以通过测量电流波形计算得出，比如测量电流波形得到蓝牙工作时长为T=7ms，平均电流
-I=1.9mA，那么500ms间隔的增量电流为Txl/(500-T) = 27uA
+
+6. * Sniff 模式的间隔与 attemp 次数与手机有关，本次测试中使用 一加ace 6，attemp 次数为4。

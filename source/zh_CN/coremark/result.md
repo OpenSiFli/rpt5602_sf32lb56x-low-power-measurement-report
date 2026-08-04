@@ -1,7 +1,7 @@
 # 测量结果汇总
 
 ## 处理器功耗
-本次测量分别在 3.3V 和 1.8V 供电下进行，并对结果统一进行了汇总。
+由于PVDD支持3.3V或者1.8V供电，所以本次测量分别测试了PVDD在 3.3V 和 1.8V 供电情况下的数据。
 ### CoreMark 测试结果
 
 <div class="table-wrapper docutils container">

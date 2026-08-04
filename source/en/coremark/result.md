@@ -1,7 +1,7 @@
 # Summary of Measurements
 
 ## Processor Power
-Tests were performed under 3.3V and 1.8V supply conditions, and the results are consolidated below.
+Since PVDD supports 3.3 V or 1.8 V power supply, measurements were conducted under PVDD supply voltages of 3.3 V and 1.8 V respectively.
 ### CoreMark Results
 
 <div class="table-wrapper docutils container">
